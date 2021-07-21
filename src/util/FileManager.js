@@ -39,7 +39,6 @@ export default class FileManager {
   static async updateFileInfos (filePath, fileName, fileContent) {
     if (fileName) {
       JsonStore.pushOrUpdate("language", this.getLangFromExt(fileName));
-
       JsonStore.pushOrUpdate("current-path", filePath);
       JsonStore.pushOrUpdate("filename", fileName);
 

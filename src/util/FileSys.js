@@ -1,3 +1,5 @@
+import JsonStore from './JsonStore';
+
 const path = require("path");
 const fs = require('fs');
 
@@ -15,6 +17,7 @@ export default class FileSys {
   }
 
   static async writeTempFile (newCodeValue) {
+    JsonStore.pushOrUpdate("current-path", TEMP_FILE);
     await fs.promises.writeFile(TEMP_FILE, newCodeValue, { flag: 'w+' });
   }
 
