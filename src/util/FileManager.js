@@ -56,6 +56,15 @@ export default class FileManager {
     return language;
   }
 
+  static getExtensionFromLang (lang) {
+    let ext = 'md';
+    if (lang) {
+      ext = LANG_EXT.find(l => l.lang === lang).ext;
+    }
+
+    return ext;
+  }
+
   static async saveAs () {
     try {
       let result = await dialog.showSaveDialog();

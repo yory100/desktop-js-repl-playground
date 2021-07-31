@@ -17,6 +17,10 @@ export default class LangThemeFont {
   static updateLang (newLang) {
     JsonStore.pushOrUpdate('language', newLang);
   }
+
+  static updateExtension (newExtension) {
+    JsonStore.pushOrUpdate('file-extension', newExtension);
+  }
   // theme: monokai
   static getStoreTheme () {
     return JsonStore.getPropVal('theme') || 'monokai';

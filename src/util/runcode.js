@@ -50,6 +50,7 @@ export default function runCode () {
         break;
 
       case 'typescript':
+        console.log("current path", currPath)
         exec('ts-node ' + currPath, (error, stdout, stderr) => {
           if (stderr) { reject(stderr); }
           else resolve(stdout);

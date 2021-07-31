@@ -3,10 +3,14 @@ import JsonStore from './JsonStore';
 const path = require("path");
 const fs = require('fs');
 
-const TEMP_FILE_TS = path.join(__dirname, '/temp.ts');
 const TEMP_FILE = path.join(__dirname, '/temp');
 
 export default class FileSys {
+
+  static initFileSys () {
+    const extension = JsonStore.getPropVal("file-extension")
+    JsonStore.pushOrUpdate("current-path", TEMP_FILE + extension);
+  }
 
   static readTempFile () {
     let res = '';
