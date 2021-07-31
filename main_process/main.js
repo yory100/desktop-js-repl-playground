@@ -12,6 +12,8 @@ function createWindow () {
     icon: __dirname + '/icons/logo256.png'
   });
 
+  mainWindow.webContents.openDevTools()
+
   mainWindow.loadFile(__dirname + '/index.html');
   Menu.setApplicationMenu(menu);
 

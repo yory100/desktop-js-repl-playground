@@ -8,15 +8,15 @@ const { dialog } = require('electron').remote;
 let currentFilePath = __dirname + '/temp';
 
 const LANG_EXT = [
-  { ext: '.txt', lang: 'text' },
-  { ext: '.js', lang: 'javascript' },
-  { ext: '.ts', lang: 'typescript' },
-  { ext: '.py', lang: 'python' },
-  { ext: '.html', lang: 'html' },
-  { ext: '.go', lang: 'golang' },
-  { ext: '.java', lang: 'java' },
-  { ext: '.c', lang: 'c_cpp' },
-  { ext: '.md', lang: 'text' }
+  { ext: 'txt', lang: 'text' },
+  { ext: 'js', lang: 'javascript' },
+  { ext: 'ts', lang: 'typescript' },
+  { ext: 'py', lang: 'python' },
+  { ext: 'html', lang: 'html' },
+  { ext: 'go', lang: 'golang' },
+  { ext: 'java', lang: 'java' },
+  { ext: 'c', lang: 'c_cpp' },
+  { ext: 'md', lang: 'text' }
 ];
 
 export default class FileManager {

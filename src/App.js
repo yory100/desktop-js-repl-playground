@@ -30,7 +30,10 @@ export default function App () {
     await FileSys.writeTempFile(newValue);
   }
 
+
   React.useEffect(() => {
+    FileSys.updateFileSysPath();
+    // FileSys.writeTempFile(FileSys.readTempFile())
     ipcRenderer.on('run-code', () => {
       setBtnRunIsClicked(true);
 
@@ -63,6 +66,10 @@ export default function App () {
   const selectLang = (e) => {
     setLang(e);
     LangThemeFont.updateLang(e);
+    LangThemeFont.updateExtension(FileManager.getExtensionFromLang(e));
+    const fileContent = FileSys.readTempFile();
+    FileSys.updateFileSysPath();
+    FileSys.writeTempFile(fileContent);
   }
 
   const changeTheme = (e) => {
