@@ -9,14 +9,17 @@
 }
 
 .react-tabs-tab-close{
-    border-color: none !important;
+    background-color: #2e2e2e !important;
+    border-color: #2e2e2e !important;
     color: white !important;
+    visibility: visible !important;
 }
 
 .react-tabs-tab-close:hover{
-    background-color: none !important;
+    background-color: #2e2e2e !important;
     color: white !important;
-    border-color: none !important;
+    border-color: #2e2e2e !important;
+    outline: none;
 }
 
 .react-tabs-active{
@@ -26,12 +29,10 @@
 }
 
 .react-tabs-active .react-tabs-tab-close{
-    border-color: #002b36 !important;
-    color: white !important;
+    border-color: #2e2e2e !important;
 }
 
 .react-tabs-active .react-tabs-tab-close:hover{
-    background-color: none !important;
-    color: white !important;
-    border-color: none !important;
+    background-color: #2e2e2e !important;
+    border-color: #2e2e2e !important;
 }
