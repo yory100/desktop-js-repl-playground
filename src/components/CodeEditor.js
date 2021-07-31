@@ -3,14 +3,9 @@ import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-typescript";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-text";
-import "ace-builds/src-noconflict/mode-golang";
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/mode-c_cpp";
-/*eslint-disable no-alert, no-console */
 import "ace-builds/src-min-noconflict/ext-language_tools";
 
 import "ace-builds/src-min-noconflict/theme-dracula";
@@ -33,8 +28,10 @@ export default function CodeEditor ({ codeVal, onChange, fontSize, mode, theme, 
       enableBasicAutocompletion: true,
       enableLiveAutocompletion: true,
       showLineNumbers: true,
-      tabSize: 2,
-      useWorker: false
+      tabSize: 4,
+      useWorker: false,
+      wrapBehavioursEnabled: true,
+      wrap: true
     }}
   />;
 }
