@@ -13,12 +13,62 @@ export default function App() {
 
 	const [tabs, setTabs] = useState([
 		{
-			id: 1,
+			id: 0,
 			content: "Cute Cat",
 			active: true,
 			display: <TabsContent fontSize={fontSize} lang={lang} theme={theme} />
 		}
 	])
+
+	const moveTab = (dragIndex, hoverIndex) => {
+		let newTabs = [...tabs]
+		newTabs.splice(hoverIndex, 0, newTabs.splice(dragIndex, 1)[0]);
+		setTabs(newTabs);
+	}
+
+	const selectTab = (selectedIndex, selectedID) => {
+		const newTabs = tabs.map(tab => ({
+			...tab,
+			active: tab.id === selectedID
+		}));
+		setTabs(newTabs)
+	}
+
+	const closedTab = (removedIndex, removedID) => {
+		let newTabs = [...tabs];
+		newTabs.splice(removedIndex, 1);
+
+		if (tabs[removedIndex].active && newTabs.length !== 0) {
+			// automatically select another tab if needed
+			const newActive = removedIndex === 0 ? 0 : removedIndex - 1;
+			newTabs[newActive].active = true;
+		}
+
+		if (newTabs.length === 0) {
+			return setTabs([{
+				id: 0,
+				content: "Cute *",
+				active: true,
+				display: <TabsContent fontSize={fontSize} lang={lang} theme={theme} />
+			}]);
+		}
+
+		setTabs(newTabs);
+	}
+
+	const addTab = () => {
+		const newTabs = tabs.map(tab => ({
+			...tab,
+			active: false
+		}));
+		newTabs.push({
+			id: newTabs.length + 1,
+			content: "Cute *",
+			active: true,
+			display: <TabsContent fontSize={fontSize} lang={lang} theme={theme} />
+		});
+		setTabs(newTabs)
+	}
 
 	const updateFont = (e) => {
 		setFontSize(+e.target.value);
@@ -52,10 +102,15 @@ export default function App() {
 
 	return (
 		<>
-			<Tabs tabs={tabs}>
-				<button onClick={() => ""}>+</button>
+			<Tabs
+				moveTab={moveTab}
+				selectTab={selectTab}
+				closeTab={closedTab}
+				tabs={tabs}
+			>
+				<button onClick={addTab}>+</button>
 			</Tabs>
-			{tabs[0].display}
+			{tabs.filter(tab => tab.active)[0].display || ""}
 			<Footer
 				updateFont={updateFont}
 				fontSize={fontSize}
